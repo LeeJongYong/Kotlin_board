@@ -1,14 +1,12 @@
 package com.teddy.board.controller
 
 import com.teddy.board.model.BoardRequest
+import com.teddy.board.model.BoardResponse
 import com.teddy.board.service.BoardService
 import mu.KotlinLogging
+import org.hibernate.annotations.Parameter
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 private val logger = KotlinLogging.logger {}
 
@@ -23,8 +21,25 @@ class BoardController(
     @PostMapping
     fun create(
         @RequestBody board: BoardRequest
-    ) {
-        boardService.create(board)
-    }
+    ) = boardService.create(board)
 
+
+    @GetMapping
+    fun getAllDocs() = boardService.getAll()
+
+    @GetMapping("/{userId}")
+    fun getDocsById(
+        @PathVariable("userId") userId: String
+    ) = boardService.getDocs(userId)
+
+    @PutMapping("/{id}")
+    fun updateDocsById(
+        @PathVariable("id") id: Long,
+        @RequestBody request: BoardRequest,
+    ) = boardService.updateDocsById(id, request)
+
+    @DeleteMapping("/{id}")
+    fun deleteDocsById(
+        @PathVariable("id") id: Long,
+    ) = boardService.deleteDocsById(id)
 }

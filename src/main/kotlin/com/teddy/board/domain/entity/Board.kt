@@ -16,15 +16,15 @@ class Board (
     var id: Long? = null,
 
     @Column
-    val summary: String,
+    var summary: String,
 
     @Column
-    val description: String,
+    var description: String,
 
     @Column
-    val userId: String,
+    var userId: String,
 
     @Column
-    val userName: String,
+    var userName: String,
 
 ) : BaseEntity()        // 공통 필드인 createdDt, updatedDt 를 사용하기 위해 상속
