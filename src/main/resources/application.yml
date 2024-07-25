@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/jy_board
     username: teddy
-    password: 910924
+    password: 12341234
   jpa:
     defer-datasource-initialization: true
     show-sql: true
